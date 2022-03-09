@@ -1,4 +1,4 @@
-name: Home Assistant
+name: Home Assistant HomeSoul
 description: >-
   Open source home automation that puts local control and privacy first; a Home
   Assistant, HASS Config, and MQTT stack.
@@ -7,12 +7,12 @@ assets:
   repository:
     type: blob.asset
     data:
-      url: 'https://github.com/balenalabs-incubator/balena-homeassistant'
+      url: 'https://github.com/jesusrevollo/balena-homeassistant'
   logo:
     type: blob.asset
     data:
       url: >-
-        https://raw.githubusercontent.com/balenalabs-incubator/balena-homeassistant/master/logo.png
+        https://raw.githubusercontent.com/jesusrevollo/balena-homeassistant/master/logo.png
 data:
   defaultDeviceType: raspberrypi4-64
   supportedDeviceTypes:
@@ -20,4 +20,4 @@ data:
     - raspberrypi4-64
     - fincm3
     - beaglebone-black
-version: 0.0.4
+version: 0.0.1
