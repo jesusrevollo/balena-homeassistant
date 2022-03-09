@@ -5,9 +5,8 @@ volumes:
 services:
   homeassistant:
     build: homeassistant
-    ports:
-      - 80:8123
     privileged: true
+    network_mode: "host"
     volumes:
       - 'config:/config'
     restart: always
@@ -21,6 +20,8 @@ services:
   hass-configurator:
     image: "causticlab/hass-configurator-docker:latest"
     restart: always
+    depends_on:
+      - homeassistant
     ports:
       - "3218:3218"
     volumes:
