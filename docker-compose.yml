@@ -28,3 +28,15 @@ services:
       - 'config:/hass-config'
     environment:
       - HC_BASEPATH=/hass-config
+  wifi-connect:
+    build: ./wifi-connect
+    network_mode: "host"
+    labels:
+        io.balena.features.dbus: '1'
+    cap_add:
+        - NET_ADMIN
+    environment:
+        DBUS_SYSTEM_BUS_ADDRESS: "unix:path=/host/run/dbus/system_bus_socket"
+        PORTAL_SSID: "HomeSoul_captive"
+        PORTAL_PASSWORD: "h0mesoul2021"
+        PORTAL_LISTENING_PORT: "8080"
