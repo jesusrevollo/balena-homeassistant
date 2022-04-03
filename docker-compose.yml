@@ -1,7 +1,6 @@
 version: '2'
 volumes:
     config:
-    mosquitto:
 services:
   homeassistant:
     build: homeassistant
