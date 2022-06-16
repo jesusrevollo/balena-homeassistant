@@ -1,10 +1,8 @@
-FROM homeassistant/home-assistant:stable
+FROM homeassistant/home-assistant:2022.6
 
 COPY start.sh /tmp/start.sh
 
 COPY configuration.yaml /config/
-
-COPY mini-graph-card-bundle.js /config/www/
 
 RUN chmod +x /tmp/start.sh
 
