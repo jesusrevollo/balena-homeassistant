@@ -1,11 +1,5 @@
 
 # Configure a default setup of Home Assistant (frontend, api, etc)
-automation: !include automations.yaml
-template: !include templates.yaml
-homeassistant:
-    customize: !include customize.yaml
-
-
 default_config:
 
 # Text to speech
@@ -14,63 +8,3 @@ tts:
 
 http:
     server_port: 80
-
-telegram_bot:
-  - platform: polling
-    api_key: 618776345:AAGBnMzxqkPDP1gpRI2F_AvKLYxXgSeZw1Y
-    allowed_chat_ids:
-      - 430887791
-      - -1001250310500
-
-panel_iframe:
-  router:
-    title: "Bikes"
-    url: "https://www.home-assistant.io/docs/"
-    icon: mdi:bike
-  fridge:
-    title: "Fridge"
-    url: "http://192.168.1.31:3218"
-    icon: mdi:fridge
-
-# Example configuration.yaml entry for the notifier
-notify:
-  - platform: telegram
-    name: NOTIFIER_NAME
-    chat_id: 430887791
-
-
-sensor:      
-  - platform: rest
-    resource: https://www.buda.com/api/v2/markets/eth-cop/ticker
-    method: GET
-    value_template: '{{ value_json["ticker"]["min_ask"][0] | float }}'
-    name: "Buda ETH Sell price COP"
-    unit_of_measurement: $
-    scan_interval: 60
-    
-  - platform: rest
-    resource: https://www.buda.com/api/v2/markets/usdc-cop/ticker
-    method: GET
-    value_template: '{{ value_json["ticker"]["min_ask"][0] | float }}'
-    name: "Buda USDC Sell price COP"
-    unit_of_measurement: $
-    scan_interval: 60
-
-input_select:
-  pcoptions:
-    name: PC Power Options
-    options:
-      - Restart
-      - Shutdown
-      - None
-      - Sleep
-      - Hibernate
-    initial: None
-    icon: mdi:desktop-tower
-
-shell_command:
-  shutdown_z800: 'curl -u User:2frecuencia -k http://192.168.1.34:8123/?action=System.Shutdown'
-  restart_z800: 'curl -u User:2frecuencia -k http://192.168.1.34:8123/?action=System.Restart'
-  sleep_z800: 'curl -u User:2frecuencia -k http://192.168.1.34:8123/?action=System.Sleep'
-  hibernate_z800: 'curl  -u User:2frecuencia -k http://192.168.1.34:8123/?action=System.Hibernate'
-
